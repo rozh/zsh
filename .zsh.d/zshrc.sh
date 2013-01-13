@@ -53,11 +53,15 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
-# bindkey "ep" history-beginning-search-backward-end # emacs multi-term
-# bindkey "en" history-beginning-search-forward-end  # emacs multi-term
 
 # すべてのヒストリを表示する
 function history-all { history -E 1 }
+
+# ワードごとに削除
+autoload -U select-word-style
+select-word-style bash
+bindkey '^[^?' backward-kill-word # alt + BACKSPACE  delete word backward
+bindkey '^W' backward-kill-word # alt + BACKSPACE  delete word backward
 
 
 ##########################
@@ -131,9 +135,3 @@ case "${OSTYPE}" in
     export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
   ;;
 esac
-
-autoload -U select-word-style
-select-word-style bash
-bindkey '^[^?' backward-kill-word # alt + BACKSPACE  delete word backward
-bindkey '^W' backward-kill-word # alt + BACKSPACE  delete word backward
-

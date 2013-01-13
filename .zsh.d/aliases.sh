@@ -11,7 +11,6 @@ alias eixt=exit
 alias shut='sudo shutdown -h now'
 alias suspend='~/.script/suspend'
 alias off='xset dpms force off'
-# alias sshh='ssh hichino@v157-7-129-202.myvps.jp'
 
 # enable color support of ls and also add handy aliases
 if [ -f ~/.colorrc ]; then
@@ -35,5 +34,4 @@ function cd() {
 }
 
 # autojump
-# alias j=autojump
 [[ -s ~/.autojump/etc/profile.d/autojump.zsh ]] && . ~/.autojump/etc/profile.d/autojump.zsh
