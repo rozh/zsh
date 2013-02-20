@@ -4,7 +4,6 @@
 alias r=rails
 alias v=vim
 alias e='emacsclient'
-alias emacs='emacsclient'
 alias sl=ls
 alias cd../='cd ../'
 alias eixt=exit
