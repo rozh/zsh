@@ -7,10 +7,10 @@ bindkey "^[[Z" reverse-menu-complete  # Shift-Tabで補完候補を逆順する(
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
-bindkey "^[p" history-beginning-search-backward-end
-bindkey "^[n" history-beginning-search-forward-end
+bindkey -M emacs '^[p' history-substring-search-up
+bindkey -M emacs '^[n' history-substring-search-down
+# bindkey "^[p" history-beginning-search-backward-end
+# bindkey "^[n" history-beginning-search-forward-end
 
 # ワードごとに削除
 autoload -U select-word-style
