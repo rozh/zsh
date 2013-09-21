@@ -9,8 +9,8 @@ alias sl=ls
 alias cd../='cd ../'
 alias eixt=exit
 alias shut='sudo shutdown -h now'
-alias suspend='~/.script/suspend'
-alias off='xset dpms force off'
+alias suspend='gnome-screensaver-command --lock && sudo s2ram -f'
+alias lock='gnome-screensaver-command --lock'
 
 # enable color support of ls and also add handy aliases
 if [ -f ~/.colorrc ]; then
@@ -19,6 +19,7 @@ if [ -f ~/.colorrc ]; then
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+    alias pdfgrep='pdfgrep -Hn --color auto'
 fi
 
 # some more ls aliases
@@ -31,9 +32,6 @@ alias l='ls -CF'
 function cd() {
     builtin cd $@ && ls;
 }
-
-# autojump
-[[ -s ~/.autojump/etc/profile.d/autojump.zsh ]] && . ~/.autojump/etc/profile.d/autojump.zsh
 
 alias ggl=google
 function google() {
@@ -48,3 +46,7 @@ function google() {
     fi
     chromium-browser http://www.google.com/$opt #引数がなければ $opt は空になる
 }
+
+
+# autojump
+[[ -s ~/.autojump/etc/profile.d/autojump.zsh ]] && . ~/.autojump/etc/profile.d/autojump.zsh
