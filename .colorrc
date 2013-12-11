@@ -1,4 +1,4 @@
-# Exact Solarized color theme for the color GNU ls utility.
+ Exact Solarized color theme for the color GNU ls utility.
 # Designed for dircolors (GNU coreutils) 5.97
 #
 # This simple theme was simultaneously designed for these terminal color schemes:
@@ -184,6 +184,7 @@ EXEC 37;41  # Unix
 
 # Text that we can edit with a regular editor
 .txt 32
+.csv 32
 .org 32
 .md 32
 .mkd 32
@@ -329,6 +330,9 @@ EXEC 37;41  # Unix
 .pptx 33
 .fla 33
 .psd 33
+.odt 33
+.ods 33
+.odp 33
 
 # Archives, compressed
 .7z   1;31

@@ -7,7 +7,9 @@ export LANG=en_US.UTF-8  # 文字コードをUTF-8に設定
 # export LANG=ja_JP.UTF-8  # 文字コードをUTF-8に設定
 export KCODE=u           # KCODEにUTF-8を設定
 export AUTOFEATURE=true  # autotestでfeatureを動かす
-export PATH="$PATH:$HOME/.script/"
+export PATH="$PATH:$HOME/.script"
+export OZHOME=$HOME/.oz
+export PATH="$PATH:$OZHOME/bin"
 
 setopt no_beep           # ビープ音を鳴らさないようにする
 setopt auto_cd           # ディレクトリ名の入力のみで移動する
@@ -19,7 +21,7 @@ setopt notify            # バックグラウンドジョブの状態変化を�
 setopt equals            # =commandを`which command`と同じ処理にする
 
 ### Complement ###
-fpath=($HOME/.zsh.d/zsh-completions $fpath)
+fpath=($HOME/.zsh.d/zsh-completions/src $fpath)
 autoload -U compinit; compinit # 補完機能を有効にする
 setopt auto_list               # 補完候補を一覧で表示する(d)
 setopt auto_menu               # 補完キー連打で補完候補を順に表示する(d)
@@ -42,8 +44,8 @@ unsetopt caseglob    # ファイルグロブで大文字小文字を区別しな
 
 ### History ###
 HISTFILE=~/.zsh_history   # ヒストリを保存するファイル
-HISTSIZE=50000            # メモリに保存されるヒストリの件数
-SAVEHIST=50000            # 保存されるヒストリの件数
+HISTSIZE=5000            # メモリに保存されるヒストリの件数
+SAVEHIST=5000            # 保存されるヒストリの件数
 setopt bang_hist          # !を使ったヒストリ展開を行う(d)
 setopt extended_history   # ヒストリに実行時間も保存する
 setopt hist_ignore_dups   # 直前と同じコマンドはヒストリに追加しない
