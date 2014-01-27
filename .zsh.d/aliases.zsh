@@ -11,6 +11,7 @@ alias eixt=exit
 alias shut='sudo shutdown -h now'
 alias suspend='gnome-screensaver-command --lock && sudo s2ram -f'
 alias lock='gnome-screensaver-command --lock'
+alias du='du -ms'
 
 # enable color support of ls and also add handy aliases
 if [ -f ~/.colorrc ]; then
