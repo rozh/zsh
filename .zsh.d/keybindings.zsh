@@ -11,6 +11,10 @@ bindkey -M emacs '^[p' history-substring-search-up
 bindkey -M emacs '^[n' history-substring-search-down
 # bindkey "^[p" history-beginning-search-backward-end
 # bindkey "^[n" history-beginning-search-forward-end
+# zle -la history-incremental-pattern-search-backward
+# zle -la history-incremental-pattern-search-forward
+# bindkey "^r" history-incremental-pattern-search-backward
+# bindkey "^s" history-incremental-pattern-search-forward
 
 # ワードごとに削除
 autoload -U select-word-style
@@ -21,6 +25,7 @@ bindkey "^[f"  forward-word
 bindkey "^[b"  backward-word
 
 # zaw
+bindkey '^xb' zaw-cdr
 bindkey '^x^x' zaw-history
 
 # my function
@@ -65,3 +70,8 @@ function do_enter() {
     my-reset-prompt
     return 0
 }
+
+source $HOME/.zsh.d/percol.zsh
+bindkey '^R' percol_select_history
+bindkey '^x^b' percol_cd_history
+bindkey '^xb' percol_insert_history
