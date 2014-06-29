@@ -48,7 +48,7 @@ HISTSIZE=5000            # メモリに保存されるヒストリの件数
 SAVEHIST=5000            # 保存されるヒストリの件数
 setopt bang_hist          # !を使ったヒストリ展開を行う(d)
 setopt extended_history   # ヒストリに実行時間も保存する
-setopt hist_ignore_dups   # 直前と同じコマンドはヒストリに追加しない
+# setopt hist_ignore_dups   # 直前と同じコマンドはヒストリに追加しない
 setopt hist_ignore_all_dups
 setopt share_history      # 他のシェルのヒストリをリアルタイムで共有する
 setopt hist_ignore_space  # スペースで始まるコマンドラインはヒストリに追加しない。
@@ -106,6 +106,37 @@ SPROMPT=$tmp_sprompt  # スペル訂正用プロンプト
   PROMPT="%{${fg[white]}%}${HOST%%.*} ${PROMPT}"
 
 
+function rprompt-git-current-branch {
+        local name st color
+
+        if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
+                return
+        fi
+        name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
+
+        repo_path=`git symbolic-ref HEAD 2> /dev/null`
+        name=${${${repo_path#/}#*/}#*/}
+        if [[ -z $name ]]; then
+                return
+        fi
+        st=`git status 2> /dev/null`
+        if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+                color=${fg[green]}
+        elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
+                color=${fg[yellow]}
+        elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
+                color=${fg_bold[red]}
+        else
+                color=${fg[red]}
+        fi
+        # %{...%} は囲まれた文字列がエスケープシーケンスであることを明示する
+        # これをしないと右プロンプトの位置がずれる
+        echo "%{$color%}($name)%{$reset_color%} "
+}
+RPROMPT='[`rprompt-git-current-branch`%~]'
+
+
+
 ### Title (user@hostname) ###
 # case "${TERM}" in
 # kterm*|xterm)
@@ -137,3 +168,9 @@ case "${OSTYPE}" in
     export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
   ;;
 esac
+
+
+################
+# Program PATH #
+################
+export PATH="$PATH:$HOME/adt-bundle-linux/sdk/tools"
