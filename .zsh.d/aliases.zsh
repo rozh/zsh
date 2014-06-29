@@ -29,6 +29,51 @@ alias la='ls -A'
 alias l='ls -CF'
 alias lt='ls -t'
 
+# alias -s
+alias -s rb=ruby
+alias -s py=python
+alias -s sh=sh
+alias -s plt=gnuplot
+alias -s {png,jpg,bmp,PNG,JPG,BMP}=eog
+alias -s {eps,pdf,ai}=evince
+alias -s {doc,xls,ppt,docx,xlsx,pptx}=libreoffice
+alias -s {opt,ods,odp,csv}=libreoffice
+alias -s html=chromium-browser
+alias -s {mp3,mp4,avi,MOV}=vlc
+function runcpp () {
+    g++ -O2 $1
+    shift
+    ./a.out $@
+}
+alias -s {c,cpp}=runcpp
+function runjava () {
+    className=$1
+    className=${className%.java}
+    javac $1
+    shift
+    java $className $@
+}
+alias -s java=runjava
+
+
+function extract() {
+  case $1 in
+    *.tar.gz|*.tgz) tar xzvf $1;;
+    *.tar.xz) tar Jxvf $1;;
+    *.zip) unzip $1;;
+    *.lzh) lha e $1;;
+    *.tar.bz2|*.tbz) tar xjvf $1;;
+    *.tar.Z) tar zxvf $1;;
+    *.gz) gzip -d $1;;
+    *.bz2) bzip2 -dc $1;;
+    *.Z) uncompress $1;;
+    *.tar) tar xvf $1;;
+    *.arj) unarj $1;;
+  esac
+}
+alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
+
+
 # cdコマンド実行後、lsを実行する
 function cd() {
     builtin cd $@ && ls;
@@ -51,3 +96,4 @@ function google() {
 
 # autojump
 [[ -s ~/.autojump/etc/profile.d/autojump.zsh ]] && . ~/.autojump/etc/profile.d/autojump.zsh
+[[ -s /usr/share/autojump/autojump.zsh ]] && source /usr/share/autojump/autojump.zsh
