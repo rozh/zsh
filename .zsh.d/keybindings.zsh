@@ -58,11 +58,11 @@ function my-reset-prompt() {
 
 function do_enter() {
     # ls_abbrev
-    if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
-        echo
-        echo -e "\e[0;33m--- git status ---\e[0m"
-        git status -sb
-    fi
+    # if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
+    #     echo
+    #     echo -e "\e[0;33m--- git status ---\e[0m"
+    #     git status -sb
+    # fi
     if [ -n "$BUFFER" ]; then
         zle accept-line
         return 0
