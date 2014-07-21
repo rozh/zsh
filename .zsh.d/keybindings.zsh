@@ -24,10 +24,6 @@ bindkey '^W'   backward-kill-word # alt + BACKSPACE  delete word backward
 bindkey "^[f"  forward-word
 bindkey "^[b"  backward-word
 
-# zaw
-bindkey '^xb' zaw-cdr
-bindkey '^x^x' zaw-history
-
 # my function
 zle -N parent_directory
 zle -N back_directory
